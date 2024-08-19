@@ -1,5 +1,4 @@
 import os
-import joblib
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -35,11 +34,7 @@ def load_model(model, filepath):
     if not os.path.exists(filepath):
         raise FileNotFoundError(f"Model file '{filepath}' doesn't exist. Create it by running train_model.py.")
     
-    # Load the CountVectorizer object
-    vectorizer = joblib.load('data/count_vectorizer.pkl')
-    
     # Load the saved model state dictionary into the model
     model.load_state_dict(torch.load(filepath))
     model.eval()  # Set the model to evaluation mode
     
-    return vectorizer
