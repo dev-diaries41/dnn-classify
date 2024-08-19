@@ -1,0 +1,5 @@
+articles_model.pt
+count_vectorizer.pkl
+**/__pycache__/
+results/
+dnnenv
