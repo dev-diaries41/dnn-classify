@@ -8,12 +8,14 @@ from sklearn.metrics import accuracy_score
 
 
 # Load the dataset
-# dataset in CSV format with columns "title" and "category"
+# dataset in CSV format with columns
 df = pd.read_csv("data/data.csv")
 
-# Preprocess the data
-df = preprocess(df)
-X_train, X_test, y_train, y_test = split_dataset(df)
+
+# Preprocess data
+category_mapping = {'AI': 0, 'Biology': 1, 'JavaScript': 2, 'Physics': 3}
+data = preprocess(df, category_mapping)
+X_train, X_test, y_train, y_test = split_dataset(data, input_column='title', output_column='category')
 
 # Define model parameters]
 in_features = X_train.shape[1]  # Number of input features
